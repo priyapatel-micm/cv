@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Alex Chen | Creative Portfolio</title>
+  <!-- Google Fonts & simple CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fbfdfe;
+      color: #1a2c3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #0f2b3d, #1e6f5c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-title h2 {
+      background: #1a2c3e;
+      background: linear-gradient(120deg, #1a2c3e, #2c7a64);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #2c7a64;
+      margin: 0.8rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* buttons & links */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1e6f5c;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #1e6f5c;
+      color: #1e6f5c;
+    }
+
+    .btn-outline:hover {
+      background: #1e6f5c;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .btn:hover {
+      background: #0e4f41;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px -10px rgba(30,111,92,0.3);
+    }
+
+    /* header & navigation */
+    header {
+      padding: 1.5rem 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #1e6f5c, #124e40);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e2f3c;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #1e6f5c;
+    }
+
+    /* hero */
+    .hero {
+      padding: 5rem 0 6rem;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #3a5a6e;
+      margin: 1.5rem 0;
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar {
+      width: 280px;
+      height: 280px;
+      background: linear-gradient(145deg, #e0f2f0, #c8e6e1);
+      border-radius: 58% 42% 67% 33% / 45% 52% 48% 55%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .avatar i {
+      font-size: 8rem;
+      color: #1e6f5c;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* skills */
+    .skills-section {
+      background: #f2f7f5;
+      padding: 5rem 0;
+      margin: 2rem 0;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem;
+    }
+
+    .skill-card {
+      background: white;
+      padding: 1.2rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.03);
+      transition: 0.2s;
+      border: 1px solid #e9f0ed;
+    }
+
+    .skill-card i {
+      font-size: 1.5rem;
+      color: #1e6f5c;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: #bdd9d1;
+      box-shadow: 0 12px 18px -12px rgba(30,111,92,0.2);
+    }
+
+    /* projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 12px 24px -16px rgba(0,0,0,0.08);
+      border: 1px solid #eef3f0;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -18px rgba(0,0,0,0.15);
+    }
+
+    .project-img {
+      background: #d9e8e3;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #1e6f5c;
+    }
+
+    .project-info {
+      padding: 1.5rem;
+    }
+
+    .project-info h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .tag {
+      background: #eef3f0;
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1e6f5c;
+    }
+
+    /* about */
+    .about-wrap {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    .about-text {
+      flex: 2;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .about-highlight {
+      background: #eef3f0;
+      padding: 1.8rem;
+      border-radius: 32px;
+      flex: 1;
+    }
+
+    /* contact & footer */
+    .contact-section {
+      background: #0f2b3d;
+      color: white;
+      padding: 4rem 0;
+      border-radius: 48px 48px 0 0;
+      margin-top: 4rem;
+    }
+
+    .contact-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(255,255,255,0.1);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      transition: 0.2s;
+    }
+
+    .social-links a:hover {
+      background: #1e6f5c;
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: #0f2b3d;
+      padding: 1.5rem 0;
+      text-align: center;
+      color: #cbdad5;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .avatar {
+        width: 220px;
+        height: 220px;
+      }
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">AlexChen.dev</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Building digital<br>experiences that matter</h1>
+        <p>Hi, I'm Alex Chen — front-end architect and creative developer. I craft fast, accessible, and beautiful web solutions with modern tools.</p>
+        <a href="#work" class="btn">See my work <i class="fas fa-arrow-right"></i></a>
+        <a href="#contact" class="btn btn-outline" style="margin-left: 0.8rem;">Let's talk</a>
+      </div>
+      <div class="hero-image">
+        <div class="avatar">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <div class="skills-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Tech Stack & Tools</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="fab fa-react"></i> React</div>
+        <div class="skill-card"><i class="fab fa-js"></i> JavaScript/TS</div>
+        <div class="skill-card"><i class="fab fa-vuejs"></i> Vue.js</div>
+        <div class="skill-card"><i class="fab fa-node"></i> Node.js</div>
+        <div class="skill-card"><i class="fab fa-figma"></i> Figma</div>
+        <div class="skill-card"><i class="fab fa-git-alt"></i> Git/GitHub</div>
+        <div class="skill-card"><i class="fas fa-database"></i> Firebase</div>
+        <div class="skill-card"><i class="fab fa-tailwind"></i> Tailwind</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Section (Work) -->
+  <section id="work">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img"><i class="fas fa-chart-line fa-4x"></i></div>
+          <div class="project-info">
+            <h3>Analytics Dashboard</h3>
+            <p>Interactive dashboard with real-time data, charts, and responsive design. Built with React and D3.js.</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">D3</span>
+              <span class="tag">Firebase</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img"><i class="fas fa-store fa-4x"></i></div>
+          <div class="project-info">
+            <h3>Urban Storefront</h3>
+            <p>E-commerce concept with cart, product filtering, and smooth animations. Integrated Stripe payments.</p>
+            <div class="project-tags">
+              <span class="tag">Vue</span>
+              <span class="tag">Pinia</span>
+              <span class="tag">SCSS</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img"><i class="fas fa-brain fa-4x"></i></div>
+          <div class="project-info">
+            <h3>TaskFlow AI</h3>
+            <p>Minimalist productivity app with AI-generated task suggestions and offline support.</p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">OpenAI</span>
+              <span class="tag">Tailwind</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin: 3rem 0 2rem;">
+        <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> View all on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About me</h2>
+      </div>
+      <div class="about-wrap">
+        <div class="about-text">
+          <p>I’m Alex Chen — a front-end developer with 5+ years of experience turning complex ideas into intuitive web interfaces. I believe that great design and clean code go hand in hand. Over the years I’ve collaborated with startups, agencies, and global brands to create digital products that users love.</p>
+          <p>When I'm not coding, you'll find me contributing to open-source, mentoring junior devs, or exploring hiking trails. I'm constantly learning about new web technologies and UX psychology. My goal: build inclusive, high-performance applications that leave a mark.</p>
+          <p><strong>📍 Based in Austin, TX · Remote worldwide</strong></p>
+        </div>
+        <div class="about-highlight">
+          <i class="fas fa-quote-left" style="font-size: 1.8rem; opacity: 0.6; margin-bottom: 0.5rem; display: inline-block;"></i>
+          <p style="font-weight: 500;">"Alex brought incredible energy and front-end expertise to our project. Delivered ahead of schedule and exceeded expectations."</p>
+          <p style="margin-top: 1rem;">— Tara Lin, Creative Director</p>
+          <hr style="margin: 1rem 0; border-color: rgba(0,0,0,0.1);">
+          <p><i class="fas fa-envelope"></i> alex.chen@portfolio.dev <br> <i class="fab fa-github"></i> /alexcreativelab</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & CTA -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-flex">
+        <div class="contact-info">
+          <h3>Let's create something great</h3>
+          <p style="opacity: 0.85;">Have a project in mind? I'd love to hear about it.</p>
+          <a href="mailto:hello@alexchen.dev" class="btn" style="background: white; color: #0f2b3d; margin-top: 1rem; display: inline-flex;">hello@alexchen.dev <i class="fas fa-paper-plane"></i></a>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Alex Chen — Designed & built with <i class="fas fa-heart" style="color: #eb7b5c;"></i> for the dev community. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Simple scroll + optional smooth reveal -->
+<script>
+  // Smooth anchor scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        // update url hash without jumping
+        history.pushState(null, null, targetId);
+      }
+    });
+  });
+
+  // simple dynamic year
+  const yearSpan = document.querySelector('footer p');
+  if(yearSpan) {
+    const currentYear = new Date().getFullYear();
+    if(yearSpan.innerText.includes('2026')) {
+      yearSpan.innerHTML = yearSpan.innerHTML.replace('2026', currentYear);
+    }
+  }
+
+  // optional: add active nav highlight on scroll (small UX)
+  const sections = document.querySelectorAll('section, .skills-section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPos = window.scrollY + 150;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if(scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    // also home detection
+    if(scrollPos < 100) current = 'home';
+    navLinks.forEach(link => {
+      link.style.opacity = '0.8';
+      link.style.fontWeight = '500';
+      const href = link.getAttribute('href').substring(1);
+      if(href === current) {
+        link.style.opacity = '1';
+        link.style.fontWeight = '700';
+        link.style.color = '#1e6f5c';
+      } else {
+        link.style.color = '#1e2f3c';
+      }
+    });
+  });
+  window.dispatchEvent(new Event('scroll'));
+</script>
+</body>
+</html>
